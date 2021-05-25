@@ -1,4 +1,4 @@
-package com.skend.news;
+package com.skend.news.types;
 
 public enum UserType {
 
