@@ -6,12 +6,13 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
+@Table(name="user_entity")
 @Data
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private String _id;
+    private long _id;
     private String username;
     private String password;
     @Enumerated(EnumType.STRING)

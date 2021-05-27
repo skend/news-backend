@@ -4,25 +4,25 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 @Entity
+@Table(name="publisher")
 @Data
 public class Publisher {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private String _id;
+    @Column(name="publisher_id")
+    private long _id;
     private String name;
     private String url;
     private Date lastQuery;
 
-    @OneToMany
-    @JoinColumn
-    private List<Author> authors;
-
-    @OneToMany
-    @JoinColumn
-    private List<Article> articles;
+//    @OneToMany(mappedBy="authors")
+//    private Set<Author> authors;
+//
+//    @OneToMany(mappedBy="articles")
+//    private Set<Article> articles;
 
 }

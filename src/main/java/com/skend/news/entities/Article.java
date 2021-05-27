@@ -4,29 +4,35 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table(name="article")
 @Data
 public class Article {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private String _id;
+    @Column(name="article_id")
+    private long _id;
     private String title;
     private String description;
     private Date date;
     private String thumbnailFilename;
     private String imageFilename;
 
-    @OneToMany
+    @ManyToMany
     private Set<Author> authors;
 
-    @ManyToOne
-    private Publisher publisher;
+//    @ManyToOne
+//    @JoinColumn(name="publisher_id", nullable=false)
+//    private Publisher publisher;
 
-    @OneToMany
-    private List<Section> sections;
+    @ManyToMany
+    @JoinTable(
+            name="article_sections",
+            joinColumns = @JoinColumn(name="article_id"),
+            inverseJoinColumns = @JoinColumn(name="section_id"))
+    private Set<Section> sections;
 
 }
