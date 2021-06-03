@@ -19,10 +19,10 @@ public class Publisher {
     private String url;
     private Date lastQuery;
 
-//    @OneToMany(mappedBy="authors")
-//    private Set<Author> authors;
-//
-//    @OneToMany(mappedBy="articles")
-//    private Set<Article> articles;
+    @OneToMany(mappedBy="publisher")
+    private Set<Author> authors;
+
+    @OneToMany(mappedBy="publisher")
+    private Set<Article> articles;
 
 }

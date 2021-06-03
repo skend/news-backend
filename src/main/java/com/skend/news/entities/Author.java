@@ -16,9 +16,9 @@ public class Author {
     private long _id;
     private String name;
 
-//    @ManyToOne
-//    @JoinColumn(name="publisher_id", nullable=false)
-//    private Publisher publisher;
+    @ManyToOne
+    @JoinColumn(name="publisher_id", nullable=false)
+    private Publisher publisher;
 
     private String url;
 

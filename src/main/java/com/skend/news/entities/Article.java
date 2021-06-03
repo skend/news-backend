@@ -24,9 +24,9 @@ public class Article {
     @ManyToMany
     private Set<Author> authors;
 
-//    @ManyToOne
-//    @JoinColumn(name="publisher_id", nullable=false)
-//    private Publisher publisher;
+    @ManyToOne
+    @JoinColumn(name="publisher_id", nullable=false)
+    private Publisher publisher;
 
     @ManyToMany
     @JoinTable(
