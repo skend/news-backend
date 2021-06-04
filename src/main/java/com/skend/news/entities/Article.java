@@ -1,38 +1,32 @@
 package com.skend.news.entities;
 
 import lombok.Data;
-
-import javax.persistence.*;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 import java.util.Date;
 import java.util.Set;
 
-@Entity
-@Table(name="article")
+@Document
 @Data
 public class Article {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="article_id")
-    private long _id;
-    private String title;
-    private String description;
-    private Date date;
-    private String thumbnailFilename;
-    private String imageFilename;
+    @MongoId
+    private ObjectId _id;
+    private final String title;
+    private final String description;
+    private final Date date;
+    private final String thumbnailFilename;
+    private final String imageFilename;
 
-    @ManyToMany
-    private Set<Author> authors;
+    @DBRef
+    private final Set<Author> authors;
 
-    @ManyToOne
-    @JoinColumn(name="publisher_id", nullable=false)
-    private Publisher publisher;
+    @DBRef
+    private final Publisher publisher;
 
-    @ManyToMany
-    @JoinTable(
-            name="article_sections",
-            joinColumns = @JoinColumn(name="article_id"),
-            inverseJoinColumns = @JoinColumn(name="section_id"))
-    private Set<Section> sections;
+    @DBRef
+    private final Set<Section> sections;
 
 }

@@ -1,28 +1,27 @@
 package com.skend.news.entities;
 
 import lombok.Data;
-
-import javax.persistence.*;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 import java.util.Date;
 import java.util.Set;
 
-@Entity
-@Table(name="publisher")
+@Document
 @Data
 public class Publisher {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="publisher_id")
-    private long _id;
-    private String name;
-    private String url;
-    private Date lastQuery;
+    @MongoId
+    private ObjectId _id;
+    private final String name;
+    private final String url;
+    private final Date lastQuery;
 
-    @OneToMany(mappedBy="publisher")
-    private Set<Author> authors;
+    @DBRef
+    private final Set<Author> authors;
 
-    @OneToMany(mappedBy="publisher")
-    private Set<Article> articles;
+    @DBRef
+    private final Set<Article> articles;
 
 }

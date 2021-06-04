@@ -2,23 +2,22 @@ package com.skend.news.entities;
 
 import com.skend.news.types.SectionType;
 import lombok.Data;
-
-import javax.persistence.*;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 import java.util.List;
 
-@Entity
-@Table(name="section")
+@Document
 @Data
 public class Section {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="section_id")
-    private long _id;
-    private SectionType section;
-    private String description;
+    @MongoId
+    private ObjectId _id;
+    private final SectionType section;
+    private final String description;
 
-    @ManyToMany
-    private List<Article> articles;
+    @DBRef
+    private final List<Article> articles;
 
 }
