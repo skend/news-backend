@@ -16,11 +16,11 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
     MongoTemplate mongoTemplate;
 
     @Override
-    public User findUserByUsername(byte[] name) {
+    public User findUserByUsername(String name) {
         final Query query = new Query();
         final List<Criteria> criteria = new ArrayList<>();
 
-        if (name != null && name.length > 0) {
+        if (name != null && !name.isBlank()) {
             criteria.add(Criteria.where("username").is(name));
         }
 

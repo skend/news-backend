@@ -22,7 +22,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-	implementation 'com.microsoft.sqlserver:mssql-jdbc:9.2.1.jre11'
 	implementation 'com.bol:spring-data-mongodb-encrypt:2.6.2'
 
 	compileOnly 'org.projectlombok:lombok'

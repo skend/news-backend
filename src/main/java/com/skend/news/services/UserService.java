@@ -19,7 +19,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User getUserByUsername(byte[] username) {
+    public User getUserByUsername(String username) {
         return userRepository.findUserByUsername(username);
     }
 

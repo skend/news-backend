@@ -8,9 +8,7 @@ import java.util.List;
 
 public interface ArticleCustomRepository {
 
-    List<Article> findArticlesByAuthor(String firstName, String lastName);
-    List<Article> findArticlesByPublisher(String publisherName);
-    List<Article> findArticlesBySection(SectionType section);
-    List<Article> findArticlesByDate(Date date);
+    List<Article> findArticlesByKeywords(String[] keywords, int limit, int skip);
+    List<Article> findArticlesByDate(Date date, int limit, int skip);
 
 }

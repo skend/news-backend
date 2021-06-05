@@ -12,7 +12,7 @@ public class User {
 
     @MongoId
     public ObjectId _id;
-    @Field @Encrypted
+    @Field
     public String username;
     @Field @Encrypted
     public String password;
