@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getUserByUsername(@RequestParam(required=true) String username) {
+    public ResponseEntity<?> getUserByUsername(@RequestParam String username) {
         return ResponseEntity.ok().body(userService.getUserByUsername(username));
     }
 

@@ -1,7 +1,6 @@
 package com.skend.news.controllers;
 
 import com.skend.news.entities.Article;
-import com.skend.news.entities.User;
 import com.skend.news.services.ArticleService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +23,14 @@ public class ArticleController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getArticlesByKeywords(@RequestParam(required=true) String words,
+    public ResponseEntity<?> getArticlesByKeywords(@RequestParam String words,
                                                    @RequestParam(required=false) int limit,
                                                    @RequestParam(required=false) int skip) {
-        return ResponseEntity.ok().body(articleService.getArticlesByKeywords(words.split(" "), limit, skip));
+        return ResponseEntity.ok().body(articleService.getArticlesByKeywords(words, limit, skip));
     }
 
     @GetMapping
-    public ResponseEntity<?> getArticlesByDate(@RequestParam(required=true) Date date,
+    public ResponseEntity<?> getArticlesByDate(@RequestParam Date date,
                                                @RequestParam(required=false) int limit,
                                                @RequestParam(required=false) int skip) {
         return ResponseEntity.ok().body(articleService.getArticlesByDate(date, limit, skip));
