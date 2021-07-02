@@ -5,26 +5,22 @@ import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
-import java.util.Date;
+
 import java.util.Set;
 
 @Document
 @Data
-public class Publisher {
+public class RssFeed {
 
     @MongoId
     private ObjectId _id;
     private final String name;
     private final String url;
-    private final Date lastQuery;
 
     @DBRef
-    private final Set<Author> authors;
+    private final Set<Section> sections;
 
     @DBRef
-    private final Set<Article> articles;
-
-    @DBRef
-    private final Set<RssFeed> rssFeeds;
+    private Publisher publisher;
 
 }
